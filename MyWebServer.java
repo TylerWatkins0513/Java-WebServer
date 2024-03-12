@@ -1,8 +1,6 @@
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 
@@ -36,7 +34,6 @@ public class MyWebServer {
         @Override
         public void run() {
             try {
-                // ###### Fill in Start ######
                 String line = null;
                 Date requestedDate = new Date();
                 
@@ -66,21 +63,7 @@ public class MyWebServer {
                //Start read
                 while( (line=socketInput.readLine()) != null && !line.equals("")){
                     System.out.println(line);
-                    // COULD NOT GET IF-MOD-SINCE TO WORK
-                    /*if(line.startsWith("If-Modified-Since")){
-                        String requested = line.substring(15).trim();
-                        Date requested_Date = new Date(requested)
-
-                        SimpleDateFormat dateFormat = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss z");
-                            Date lastModified = new Date(requestedFile.lastModified());
-                            String lastModifiedStr = dateFormat.format(lastModified);
-                        if(lastModified.isAfter(requested_Date)){
-                            modifiedResponse = "200 OK";
-                        }
-                        else
-                            modifiedResponse = "304 Not Modified";
-                       
-                    */
+                    
                         
                      }
                       
@@ -105,7 +88,6 @@ public class MyWebServer {
                 
                 socketOutput.println(fLineArray[0] + " " + fLineArray [1]+ " ");
 
-                // ###### Fill in End ######
 
             } catch (Exception e) {
                 e.printStackTrace();
